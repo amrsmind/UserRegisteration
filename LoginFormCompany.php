@@ -5,22 +5,22 @@
     <body>
         <div class="container">
             <div class="header">
-             <h2>Login</h2>
+             <h2>LoginCompany</h2>
         </div>
-        <form action="Login.php" method="post">
+        <form action="LoginCompany.php" method="post">
             
         <div>  
-        <label for="firstname">First Name</label>
-        <input type="text" name="firstname" required>
+        <label for="firstname"> Name</label>
+        <input type="text" name="Name" required>
         </div>
         
         <div>  
         <label for="password">Password</label>
-        <input type="password" name="password" required>
+        <input type="password" name="Password" required>
         </div>    
             
             
-        <input type="submit" value="Sign In" name="login_form">  
+        <input type="submit" value="Sign In" name="logincompany_form">  
             
         
         </form> 
