@@ -1,7 +1,7 @@
 <?php  
-include "LoginDA.php";
+include "LoginDAAdmin.php";
 
-class Login{
+class LoginAdmin{
     public $firstname;
     public $password;
     public $DA; //dataaccesslayer
@@ -18,18 +18,18 @@ class Login{
       
    }
     public function getDA(){
-        $this->DA = new LoginDA();
+        $this->DA = new LoginDAAdmin();
     }
 }
 
 //main 
 
-    $R = new Login();
+    $R = new LoginAdmin();
     $R->get_form_values();
     $R->getDA();
 
     //$DA = new LoginDA();
     $R->DA->startconnection();
-    $R->DA->select_user_DB($R->firstname,$R->password);    
+    $R->DA->select_admin_DB($R->firstname,$R->password);    
     
 ?>

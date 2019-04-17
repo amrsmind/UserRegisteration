@@ -5,9 +5,9 @@
     <body>
         <div class="container">
             <div class="header">
-             <h2>Login</h2>
+             <h2>LoginAdmin</h2>
         </div>
-        <form action="Login.php" method="post">
+        <form action="LoginAdmin.php" method="post">
             
         <div>  
         <label for="firstname">First Name</label>
@@ -20,7 +20,7 @@
         </div>    
             
             
-        <input type="submit" value="Sign In" name="login_form">  
+        <input type="submit" value="Sign In" name="loginadmin_form">  
             
         
         </form> 
