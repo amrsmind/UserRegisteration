@@ -10,13 +10,13 @@
         <form action="RegisterCompany.php" method="post">
             
         <div>  
-        <label for="firstname">Name</label>
+        <label for="Name">Name</label>
         <input type="text" name="Name" required>
         </div>
         
         <div>  
-        <label for="lastname">Address</label>
-        <input type="text" name="Address" required>
+        <label for="Location">Location</label>
+        <input type="text" name="Location" required>
         </div>
             
         <div>  
@@ -31,9 +31,21 @@
         </div>    
             
         <div>  
-        <label for="age">Number Of Employees</label>
-        <input type="text" name="numberOfEmployees" required>
-        </div>   
+        <label for="Employeenumber">Number Of Employees</label>
+        <input type="text" name="Employeenumber" required>
+        </div>
+            
+                               
+        <div>  
+        <label for="interests">interests</label>
+        <input type="text" name="array[]" >
+        <input type="text" name="array[]" >
+        <input type="text" name="array[]" >
+        <input type="text" name="array[]" >
+        <input type="text" name="array[]" >
+        </div>    
+            
+            
             
             
         <input type="submit" value="Create" name="registercompany_form">    

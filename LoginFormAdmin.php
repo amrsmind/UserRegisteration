@@ -10,8 +10,8 @@
         <form action="LoginAdmin.php" method="post">
             
         <div>  
-        <label for="firstname">First Name</label>
-        <input type="text" name="firstname" required>
+        <label for="Email">Email</label>
+        <input type="text" name="Email" required>
         </div>
         
         <div>  

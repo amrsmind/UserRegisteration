@@ -2,6 +2,7 @@
 include "RegisterDAUser.php";
 
 class RegisterUser{
+    public $id;
     public $firstname;
     public $lastname;
     public $email;
@@ -9,6 +10,8 @@ class RegisterUser{
     public $age;
     public $gender;
     public $DA; //dataaccesslayer
+    public $interests;
+    
    
    public function get_form_values(){
        /*$firstname = mysqli_real_escape_string($_POST['firstname']);
@@ -24,11 +27,12 @@ class RegisterUser{
        $this->password = $_POST['password'];
        $this->age =  $_POST['age'];
        $this->gender = $_POST['gender'];
+       $this->interests  = $_POST['array']; 
    }
-   if (isset($_POST['login_form'])){
+   /*if (isset($_POST['login_form'])){
    	$this->firstname =$_POST['firstname'];
    	 $this->password = $_POST['password'];
-   }
+   }*/
    }
     public function getDA(){
         $this->DA = new RegisterDAUser();
@@ -36,6 +40,12 @@ class RegisterUser{
     public function returninterestsname(){
         $tempinterests = $this->DA->returninterestsname();
         return $tempinterests;
+    }
+    public function addinterests(){
+        $this->DA->addinterests_db($this->id,$this->interests);
+    }
+    public function add_user(){
+           $this->id = $this->DA->add_user_DB($this->firstname,$this->lastname,$this->email,$this->password,$this->age,$this->gender);    
     }
 }
 
@@ -47,6 +57,7 @@ class RegisterUser{
 
     //$DA = new RegisterDA();
     $R->DA->startconnection();
-    $R->DA->add_user_DB($R->firstname,$R->lastname,$R->email,$R->password,$R->age,$R->gender);    
+    $R->add_user();
+    $R->addinterests(); 
     
 ?>

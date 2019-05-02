@@ -1,8 +1,8 @@
 <?php  
-include "LoginDA.php";
+include "LoginDAUser.php";
 
-class Login{
-    public $firstname;
+class LoginUser{
+    public $Email;
     public $password;
     public $DA; //dataaccesslayer
    
@@ -13,23 +13,28 @@ class Login{
        $password = mysqli_real_escape_string($_POST['password']);
        $age = mysqli_real_escape_string($_POST['age']);
        $gender = mysqli_real_escape_string($_POST['gender']);*/
-       $this->firstname = (isset($_POST['firstname'])) ? $_POST['firstname']:'';
-       $this->password = (isset($_POST['password'])) ? $_POST['password']:''; 
+      if(isset($_POST['login_form'])){
+       $this->Email = $_POST['Email'];
+       $this->password = $_POST['password']; 
+      }
       
    }
     public function getDA(){
-        $this->DA = new LoginDA();
+        $this->DA = new LoginDAUser();
+    }
+    public function select_user(){
+        $this->DA->select_user_DB($this->Email,$this->password);
     }
 }
 
 //main 
 
-    $R = new Login();
+    $R = new LoginUser();
     $R->get_form_values();
     $R->getDA();
 
     //$DA = new LoginDA();
     $R->DA->startconnection();
-    $R->DA->select_user_DB($R->firstname,$R->password);    
+    $R->select_user();
     
 ?>
