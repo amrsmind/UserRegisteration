@@ -9,14 +9,15 @@
         </div>
         <form action="LoginCompany.php" method="post">
             
+            
         <div>  
-        <label for="firstname"> Name</label>
-        <input type="text" name="Name" required>
+        <label for="Email">Email</label>
+        <input type="text" name="Email" required>
         </div>
         
         <div>  
         <label for="password">Password</label>
-        <input type="password" name="Password" required>
+        <input type="password" name="password" required>
         </div>    
             
             

@@ -2,8 +2,8 @@
 include "LoginDACompany.php";
 
 class LoginCompany{
-    public $Name;
-    public $pPassword;
+    public $Email;
+    public $password;
     public $DA; //dataaccesslayer
    
    public function get_form_values(){
@@ -13,12 +13,17 @@ class LoginCompany{
        $password = mysqli_real_escape_string($_POST['password']);
        $age = mysqli_real_escape_string($_POST['age']);
        $gender = mysqli_real_escape_string($_POST['gender']);*/
-       $this->Name = (isset($_POST['Name'])) ? $_POST['Name']:'';
-       $this->Password = (isset($_POST['Password'])) ? $_POST['Password']:''; 
+      if(isset($_POST['logincompany_form'])){
+       $this->Email = $_POST['Email'];
+       $this->password = $_POST['password']; 
+      }
       
    }
     public function getDA(){
         $this->DA = new LoginDACompany();
+    }
+        public function select_company(){
+        $this->DA->select_company_DB($this->Email,$this->password);
     }
 }
 
@@ -30,6 +35,7 @@ class LoginCompany{
 
     //$DA = new LoginDA();
     $R->DA->startconnection();
-    $R->DA->select_company_DB($R->Name,$R->Password);    
+    $R->select_company();
+  
     
 ?>

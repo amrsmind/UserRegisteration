@@ -1,6 +1,7 @@
 <html>
 <!-- registerForm-->    
 <head>
+    
     </head>
     <body>
         <div class="container">
@@ -42,21 +43,13 @@
                        
         <div>  
         <label for="interests">interests</label>
-        <select name="interests" multiple size="5"> 
-        <option value="null">null</option>    
-        <?php
-        include "RegisterUser.php";
-        $R = new RegisterUser();
-        $R->getDA();
-        $R->DA->startconnection();
-        echo $R->returninterestsname();     
-        ?>   
-        </select>       
+        <input type="text" name="array[]" >
+        <input type="text" name="array[]" >
+        <input type="text" name="array[]" >
+        <input type="text" name="array[]" >
+        <input type="text" name="array[]" >
         </div>
             
-            
-
-        
 
             
         <input type="submit" value="Sign In" name="register_form">    

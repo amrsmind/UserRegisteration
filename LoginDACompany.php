@@ -3,20 +3,24 @@ class LoginDACompany{
     private $db;
     
     public function startconnection(){
-        $this->db = mysqli_connect('localhost',"root",'','usermanagement') or die("could not connect");
+        $this->db = mysqli_connect('127.0.0.1:3307',"root",'','usermanagement') or die("could not connect");
     }
-    public function select_company_DB($Name,$Password){   
+    
+    public function select_company_DB($Email,$password){   
 
             if(isset($_POST['logincompany_form'])){
-            $query = "SELECT * FROM company WHERE Name = '$Name' AND Password = '$Password'";
+            $query = "SELECT * FROM company WHERE Email = '$Email' AND password = '$password'";
             $result = mysqli_query($this->db,$query);
 
 
             if(!empty($row = mysqli_fetch_assoc($result))){
                 session_start();
-                $_SESSION['Login_Company'] = $row['ID'];
-                header('Location:LoginCompany.php?id='.$row['ID']);
+                $_SESSION['Login_User'] = $row['ID'];
+                header('Location:LoginFormCompany.php?id='.$row['ID']);
             }
+                else{
+                    return false;
+                }
 }
 
         return true;

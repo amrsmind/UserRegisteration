@@ -7,11 +7,11 @@
             <div class="header">
              <h2>Login</h2>
         </div>
-        <form action="Login.php" method="post">
+        <form action="LoginUser.php" method="post">
             
         <div>  
-        <label for="firstname">First Name</label>
-        <input type="text" name="firstname" required>
+        <label for="Email">Email</label>
+        <input type="text" name="Email" required>
         </div>
         
         <div>  

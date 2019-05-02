@@ -3,16 +3,15 @@ class RegisterDACompany{
     private $db;
     
     public function startconnection(){
-        $this->db = mysqli_connect('localhost',"root",'','usermanagement') or die("could not connect");
+        $this->db = mysqli_connect('127.0.0.1:3307',"root",'','usermanagement') or die("could not connect");
     }
     public function add_company_DB($Name,$Address,$Email,$Password,$numberOfEmployees){   
         
-             ///insert the user to db 
         if($this->check_dublicate_registercompany($Email)){
-            return false;
+            return 0;
         }
             if(isset($_POST['registercompany_form'])){
-             $query = "INSERT INTO company(Name,Address,Email,Password,numberOfEmployees) VALUES ('$Name','$Address','$Email','$Password','$numberOfEmployees')";
+             $query = "INSERT INTO company(Name,Email,password,Location,EmployeeNumber) VALUES ('$Name','$Email','$Password','$Address','$numberOfEmployees')";
              $result = mysqli_query($this->db,$query);
 }
              $query2 = "select ID from company where Email = '$Email'";
@@ -20,11 +19,11 @@ class RegisterDACompany{
 
              $row = mysqli_fetch_assoc($result2);
             if(!empty($row)){
-                session_start();
-                $_SESSION['Login_Company'] = $row['ID'];
-                header('Location:RegisterCompany.php?id='.$row['ID']);
+                return $row['ID'];
+                /*session_start();
+                $_SESSION['Login_User'] = $row['ID'];
+                header('Location:RegisterFormUser.php?id='.$row['ID']);*/
             }
-        return true;
     }
     
     public function check_dublicate_registercompany($Email){
@@ -40,6 +39,16 @@ class RegisterDACompany{
         return false;
 
               //////////
+    }
+    
+        public function addinterests_db($id,$array){
+        $num = count($array);
+        if(isset($_POST['registercompany_form'])){
+                for($i=0;$i<$num;$i++){
+             $query = "INSERT INTO interests VALUES ('$array[$i]','$id',TRUE)";
+             $result = mysqli_query($this->db,$query);
+}
+        }
     }
     
     

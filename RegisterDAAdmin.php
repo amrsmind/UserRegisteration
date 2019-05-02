@@ -3,16 +3,16 @@ class RegisterDAAdmin{
     private $db;
     
     public function startconnection(){
-        $this->db = mysqli_connect('localhost',"root",'','usermanagement') or die("could not connect");
+        $this->db = mysqli_connect('127.0.0.1:3307',"root",'','usermanagement') or die("could not connect");
     }
     public function add_admin_DB($firstname,$lastname,$email,$password,$age,$gender){   
         
              ///insert the user to db 
-        if($this->check_dublicate_registeradmin($email)){
-            return false;
+        if($this->check_dublicate_register($email)){
+            return 0;
         }
             if(isset($_POST['registeradmin_form'])){
-             $query = "INSERT INTO admin(FirstName,LastName,Email,password,Age,Gender) VALUES ('$firstname','$lastname','$email','$password','$age','$gender')";
+             $query = "INSERT INTO admin(FirstName,LastName,Email,Password,Age,Gender) VALUES ('$firstname','$lastname','$email','$password','$age','$gender')";
              $result = mysqli_query($this->db,$query);
 }
              $query2 = "select ID from admin where Email = '$email'";
@@ -20,14 +20,14 @@ class RegisterDAAdmin{
 
              $row = mysqli_fetch_assoc($result2);
             if(!empty($row)){
-                session_start();
-                $_SESSION['Login_Admin'] = $row['ID'];
-                header('Location:RegisterAdmin.php?id='.$row['ID']);
+                return $row['ID'];
+                /*session_start();
+                $_SESSION['Login_User'] = $row['ID'];
+                header('Location:RegisterFormUser.php?id='.$row['ID']);*/
             }
-        return true;
     }
     
-    public function check_dublicate_registeradmin($email){
+    public function check_dublicate_register($email){
         //check if email has registered before 
          $query = "select * from admin where Email = '$email' limit 1";
 

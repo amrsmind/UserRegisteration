@@ -40,7 +40,7 @@
         <input type="text" name="gender" required>
         </div>
             
-        <input type="submit" value="Sign In" name="registeradmin_form">    
+        <input type="submit" value="Register" name="registeradmin_form">    
             
         <p>Already a user?<a href="LoginForm.php">Log In</a></p>    
             

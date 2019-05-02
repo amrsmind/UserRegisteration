@@ -25,13 +25,16 @@ class RegisterAdmin{
        $this->age =  $_POST['age'];
        $this->gender = $_POST['gender'];
    }
-   if (isset($_POST['login_form'])){
+   /*if (isset($_POST['login_form'])){
    	$this->firstname =$_POST['firstname'];
    	 $this->password = $_POST['password'];
-   }
+   }*/
    }
     public function getDA(){
         $this->DA = new RegisterDAAdmin();
+    }
+    public function add_admin(){
+           $this->id = $this->DA->add_admin_DB($this->firstname,$this->lastname,$this->email,$this->password,$this->age,$this->gender);    
     }
 }
 
@@ -43,6 +46,7 @@ class RegisterAdmin{
 
     //$DA = new RegisterDA();
     $R->DA->startconnection();
-    $R->DA->add_admin_DB($R->firstname,$R->lastname,$R->email,$R->password,$R->age,$R->gender);    
+    $R->add_admin();
+
     
 ?>
